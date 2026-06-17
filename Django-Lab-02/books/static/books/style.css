@@ -1,0 +1,108 @@
+/* Barebones styling for Bookstore Hub */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header {
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+}
+
+.nav-links {
+    margin-top: 10px;
+}
+
+.nav-links a {
+    margin-right: 15px;
+    text-decoration: underline;
+    color: #0000ee;
+}
+
+main {
+    margin-bottom: 40px;
+}
+
+footer {
+    border-top: 1px solid #cccccc;
+    padding-top: 10px;
+    font-size: 12px;
+    color: #666666;
+}
+
+/* Tables and Catalog */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #cccccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #0000ee;
+    border: 1px solid #cccccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #eeeeee;
+}
+
+.btn-danger {
+    color: #cc0000;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    max-width: 400px;
+    padding: 6px;
+    border: 1px solid #cccccc;
+}
+
+/* Detail view */
+.detail-meta {
+    margin: 10px 0;
+    color: #555555;
+}
+
+.detail-actions {
+    margin-top: 20px;
+}
+
+.detail-actions a {
+    margin-right: 15px;
+}

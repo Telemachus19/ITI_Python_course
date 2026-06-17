@@ -1,0 +1,28 @@
+{% extends 'books/base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<p><a href="{% url 'book_list' %}">&lt; Back to List</a></p>
+
+<h1>{{ book.title }}</h1>
+
+<div class="detail-meta">
+    <p><strong>Rating:</strong> {{ book.rate }} / 5</p>
+    <p><strong>Views:</strong> {{ book.views }}</p>
+</div>
+
+<hr>
+
+<h3>Description:</h3>
+<p>{{ book.desc|linebreaks|default:"(No description)" }}</p>
+
+<hr>
+
+<div class="detail-actions">
+    <p>
+        <a href="{% url 'book_update' book.pk %}">Edit Book</a> | 
+        <a href="{% url 'book_delete' book.pk %}" style="color: red;">Delete Book</a>
+    </p>
+</div>
+{% endblock %}

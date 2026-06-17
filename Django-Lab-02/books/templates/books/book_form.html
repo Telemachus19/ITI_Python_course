@@ -1,0 +1,18 @@
+{% extends 'books/base.html' %}
+
+{% block title %}{{ action }} Book{% endblock %}
+
+{% block content %}
+<p><a href="{% if book %}{% url 'book_detail' book.pk %}{% else %}{% url 'book_list' %}{% endif %}">&lt; Cancel</a></p>
+
+<h1>{{ action }} Book</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <br>
+    <button type="submit">Save Book</button>
+</form>
+{% endblock %}

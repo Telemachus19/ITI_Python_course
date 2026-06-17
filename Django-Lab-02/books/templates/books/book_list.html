@@ -1,0 +1,39 @@
+{% extends 'books/base.html' %}
+
+{% block title %}Book Catalog{% endblock %}
+
+{% block content %}
+<h1>Books</h1>
+<p><a href="{% url 'book_create' %}">Add New Book</a></p>
+
+{% if books %}
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Rating (0-5)</th>
+            <th>Views</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td><strong>{{ book.title }}</strong></td>
+            <td>{{ book.desc|default:"-"|truncatewords:15 }}</td>
+            <td>{{ book.rate }}/5</td>
+            <td>{{ book.views }}</td>
+            <td>
+                <a href="{% url 'book_detail' book.pk %}">View</a> |
+                <a href="{% url 'book_update' book.pk %}">Edit</a> |
+                <a href="{% url 'book_delete' book.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No books in database. <a href="{% url 'book_create' %}">Add a book</a>.</p>
+{% endif %}
+{% endblock %}

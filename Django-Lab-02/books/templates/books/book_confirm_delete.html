@@ -1,0 +1,14 @@
+{% extends 'books/base.html' %}
+
+{% block title %}Delete {{ book.title }}{% endblock %}
+
+{% block content %}
+<h1>Delete Book</h1>
+<p>Are you sure you want to delete book <strong>"{{ book.title }}"</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" style="color: red; font-weight: bold;">Yes, Delete Book</button>
+    <a href="{% url 'book_detail' book.pk %}" style="margin-left: 15px;">Cancel</a>
+</form>
+{% endblock %}
