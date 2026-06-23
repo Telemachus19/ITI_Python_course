@@ -11,6 +11,9 @@
     <thead>
         <tr>
             <th>Title</th>
+            <th>Owner</th>
+            <th>Categories</th>
+            <th>ISBN</th>
             <th>Description</th>
             <th>Rating (0-5)</th>
             <th>Views</th>
@@ -21,13 +24,26 @@
         {% for book in books %}
         <tr>
             <td><strong>{{ book.title }}</strong></td>
-            <td>{{ book.desc|default:"-"|truncatewords:15 }}</td>
+            <td>{{ book.user.username }}</td>
+            <td>
+                {% for cat in book.categories.all %}
+                    {{ cat.name }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    -
+                {% endfor %}
+            </td>
+            <td>{{ book.isbn.isbn_number|default:"-" }}</td>
+            <td>{{ book.desc|default:"-"|truncatewords:10 }}</td>
             <td>{{ book.rate }}/5</td>
             <td>{{ book.views }}</td>
             <td>
-                <a href="{% url 'book_detail' book.pk %}">View</a> |
-                <a href="{% url 'book_update' book.pk %}">Edit</a> |
-                <a href="{% url 'book_delete' book.pk %}">Delete</a>
+                <a href="{% url 'book_detail' book.pk %}">View</a>
+                {% if user.is_authenticated %}
+                    | <a href="{% url 'book_update' book.pk %}">Edit</a>
+                    {% if perms.books.delete_book %}
+                        | <a href="{% url 'book_delete' book.pk %}">Delete</a>
+                    {% endif %}
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
